@@ -11,10 +11,11 @@ import javax.persistence.Id;
 @Getter
 @Setter
 @Builder
-@Entity(name = "account_pool")
+
+@Entity
 public class AccountPool {
     @Id
-    private int id;
+    private Integer id;
 
     @Column(name = "branch_code")
     private String branch;

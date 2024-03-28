@@ -5,17 +5,20 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ru.vtb.task5.model.CreateProductRegisterRequest;
 import ru.vtb.task5.model.Account;
-import ru.vtb.task5.service.AccountService;
+import ru.vtb.task5.service.AccountServiceImpl;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 public class ProductRegisterController {
     @Autowired
-    private AccountService accountService;
+    private AccountServiceImpl accountService;
 
     @PostMapping ("/corporate-settlement-account/create")
-    public ResponseEntity<Account> createProductRegister(@RequestBody CreateProductRegisterRequest request) {
+    public ResponseEntity<Account> createProductRegister(@RequestBody Map<String, Object> request) {
+
         try {
             var account = accountService.GetAccountByParams(request);
             return ResponseEntity.status(HttpStatus.ACCEPTED)
